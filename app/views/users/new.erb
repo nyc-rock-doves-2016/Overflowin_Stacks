@@ -1,0 +1,10 @@
+<h2>Please complete the form to register</h2>
+
+<%= erb :'/_errors' %>
+
+<form action='/users' method='POST'>
+	Username: <input type='text' name='user[username]'>
+	Email: <input type='text' name='user[email]'>
+	Password: <input type='password' name='user[password]'>
+	<input type='submit' value='Create Account'>
+</form>
