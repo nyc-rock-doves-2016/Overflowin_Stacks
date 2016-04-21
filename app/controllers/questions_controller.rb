@@ -9,7 +9,7 @@ get '/questions/new' do
 end
 
 get '/questions/:id' do
-  @question = Question.find_by(params[:id])
+  @question = Question.find_by(id: params[:id])
   erb :'/questions/show'
 end
 
@@ -21,6 +21,7 @@ post '/questions' do
   if question.save
     redirect '/questions'
   else
+    question.errors.full_messages
     erb :'/questions/new'
   end
 end
