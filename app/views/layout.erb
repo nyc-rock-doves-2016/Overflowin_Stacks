@@ -18,16 +18,19 @@
   <title></title>
 </head>
 <body>
-
-  <% if logged_in? %>
-  <a href='/users/<%= current_user.id %>'><%= current_user.username %></a>
-  <a href='/logout'>logout</a> 
-  <% else %>
-  <a href='/login'>Login</a>
-  <a href='/users/new'>Register</a>
-  <% end %>
-
+  <nav>
+    <a href='/questions'>Home</a>
+    <% if logged_in? %>
+     <% @user = User.find_by(id: session[:user_id]) %>
+      <a href='/users/<%= current_user.id %>'><%= current_user.username %></a>
+      <a href='/logout'>Logout</a> 
+    <% else %>
+      <a href='/login'>Login</a>
+      <a href='/users/new'>Register</a>
+    <% end %>
+  </nav>
 
   <%= yield %>
+
 </body>
 </html>
