@@ -1,0 +1,48 @@
+<a href="/questions">HOME</a>
+
+<h2><%= @question.title %></h2>
+<p><%= @question.body %></p>
+
+<ul>
+  <% @question.tags.each do |tag| %>
+    <li class="question-tag"><%= tag.name%></li>
+  <% end %>
+</ul>
+
+<div>
+<%= @question.created_at %>
+<%= @question.user.username %>
+</div>
+
+<ul class="question-comments">
+  <% @question.comments.each do |comment| %>
+    <li>
+      <p><%= comment.body%></p>
+      <p><a href="/users/<%= comment.user.id%>"><%= comment.user.username %></a>
+      <%= comment.created_at %></p>
+    </li>
+  <% end %>
+</ul>
+
+<ul class="answers">
+  <% @question.answers.each do |answer| %>
+    <li>
+      <p><%= answer.body%></p>
+      <div>
+        <%= answer.created_at %>
+        <%= answer.user.username %>
+      </div>
+
+      <ul class="answer-comments">
+        <% answer.comments.each do |comment| %>
+          <li>
+            <p><%= comment.body %></p>
+            <p><%= comment.user.username %>
+            <%= comment.created_at %></p>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <%end%>
+</ul>
+

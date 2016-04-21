@@ -1,0 +1,29 @@
+
+<h3>Top Questions</h3>
+
+<% @questions.each do |question| %>
+
+ <a href='/questions/<%= question.title %>'>
+
+    <table>
+      <tr>
+        <td><%= question.votes.length %></td><td><%= question.answers.length %></td>
+      </tr>
+
+      <tr>
+        <td>votes</td><td>answers</td>
+      </tr
+    </table>
+  </a>
+
+  <a href='/questions/<%= question.user_id %>'>
+    <h4><%= question.title %></h4>
+    <ul>
+      <% question.tags.each do |tag| %>
+        <li class="index-tag"><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+      <% end %>
+    </ul>
+  </a>
+  <a href="users/<%= question.user.id %>"><%= question.user.username %></a></p>
+
+<% end %>
