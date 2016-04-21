@@ -11,8 +11,8 @@
 </ul>
 
 <div>
-<%= @question.created_at %>
-<%= @question.user.username %>
+<span><%= @question.created_at %>
+<a href="/users/<%= @question.user.id %>"><%= @question.user.username %></a></span>
 </div>
 
 <ul class="question-comments">
@@ -35,14 +35,14 @@
       <p><%= answer.body%></p>
       <div>
         <%= answer.created_at %>
-        <%= answer.user.username %>
+        <a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a>
       </div>
 
       <ul class="answer-comments">
         <% answer.comments.each do |comment| %>
           <li>
             <p><%= comment.body %></p>
-            <p><%= comment.user.username %>
+            <p><a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a>
             <%= comment.created_at %></p>
           </li>
         <% end %>
@@ -56,5 +56,10 @@
 
 <h3>Your Answer</h3>
 <div id="your-answer-container">
+    <form action='/answers' method='POST'>
+    <textarea rows="3" cols="50" type="text" name="answer[body]"></textarea>
+    <br>
+      <input type="submit" value="Post Your Answer">
+  </form>
 </div>
 
