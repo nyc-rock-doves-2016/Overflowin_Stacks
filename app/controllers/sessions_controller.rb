@@ -9,7 +9,7 @@ post '/login' do
 		session[:user_id] = user.id
 		redirect "/users/#{user.id}"
 	else
-		errors = ['Invalid Username or Password']
+		@errors = ['Invalid Username or Password']
 		erb :'/sessions/new'
 	end
 end
