@@ -1,0 +1,9 @@
+<div>
+  <form action="/comments" method="POST">
+    <input type="textarea" name="comment[body]" >
+    <input type="hidden" name="comment[commentable_type]" value="Answer">
+    <input type="comment[commentable_id]" value="<%= answer.id %>">
+    <input type="comment[user_id]" value="<%= current_user.id %>">
+    <input type="submit" value="Add a Comment">
+  </form>
+</div>
