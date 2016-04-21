@@ -1,4 +1,5 @@
-<a href="/questions">HOME</a>
+
+
 
 <h2><%= @question.title %></h2>
 <p><%= @question.body %></p>
@@ -23,6 +24,10 @@
     </li>
   <% end %>
 </ul>
+<a href="/comments/new">add a comment</a>
+<div id="new-question-comment-container">
+</div>
+
 
 <ul class="answers">
   <% @question.answers.each do |answer| %>
@@ -45,4 +50,11 @@
     </li>
   <%end%>
 </ul>
+<a href="/comments/new">add a comment</a>
+<div id="new-answer-comment-container">
+</div>
+
+<h3>Your Answer</h3>
+<div id="your-answer-container">
+</div>
 
