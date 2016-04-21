@@ -15,7 +15,7 @@
     </table>
   </a>
 
-  <a href='/questions/<%= question.user_id %>'>
+  <a href='/questions/<%= question.user.id %>'>
     <h4><%= question.title %></h4>
     <ul>
       <% question.tags.each do |tag| %>
