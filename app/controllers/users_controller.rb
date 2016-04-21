@@ -14,6 +14,7 @@ post '/users' do
 end
 
 get '/users/:id' do
-	user = User.find_by(id: params[:id])
+	@user = User.find_by(id: params[:id])
+	@questions = @user.questions
 	erb :'users/show'
 end
