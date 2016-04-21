@@ -17,13 +17,11 @@ get '/questions/:id' do
 end
 
 post '/questions' do
-  # binding.pry
   question = Question.new(
     user_id: session[:user_id],
     title: params[:title],
     body: params[:body]
     )
-    binding.pry
     tag_array = []
     tag_array = params[:tags].split(',')
     tag_array.each do |tag|
