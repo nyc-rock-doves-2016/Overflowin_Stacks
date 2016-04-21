@@ -16,6 +16,7 @@ get '/answers/:answer_id/comments/new' do
   else
   erb :'/comments/_answer_comment_partial'
   redirect '/answers/#{answer.id}/comments/new'
+  end
 end
 
 post '/questions/:id/comments' do
@@ -35,5 +36,5 @@ post '/answers/:id/comments' do
   else
     @errors = ["Missing title or body"]
     erb :'/comments/_answer_comment_partial'
-  end
+    end
 end
