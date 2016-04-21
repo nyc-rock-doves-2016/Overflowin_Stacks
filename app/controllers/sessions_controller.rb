@@ -14,8 +14,8 @@ post '/login' do
 	end
 end
 
-get '/logout' do
+delete '/logout' do
 	session.clear
-	erb :'/sessions/new'
+	redirect '/questions'
 end
 
