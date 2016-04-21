@@ -11,4 +11,7 @@ class Question < ActiveRecord::Base
   # def points
   #   votes.sum(:value)
   # end
+
 end
+
+
