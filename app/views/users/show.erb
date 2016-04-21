@@ -1,12 +1,30 @@
 <% if logged_in? %>
-	<h2>Welcome <%= current_user.username %> </h2>
+	<h2><%= @user.username %>'s Profile </h2>
 
 
-	<h3>Questions you asked</h3>
+	<div class='my-questions'>
+		<% if current_user.id == @user.id %>
+			<h3>Questions You Asked</h3>
+		<% else %>
+			<h3>Questions <%= @user.username %> Asked</h3>
+		<% end %>
+		<ul>
+			<% @questions.each do |question| %>
+				<li><a href='/questions/<%= question.id %>'><%= question.title %></a></li>
+			<% end %>
+		</ul>
+	</div>
 
+	<div class='my-answers'>
+	<% if current_user.id == @user.id %>
+		<h3>Questions You have Answered</h3>
+	<% else %>
+		<h3>Questions <%= @user.username %> Answered</h3>
+	<% end %>
 	<ul>
-		<% @questions.each do |question| %>
-			<li><a href='/questions/<%= question.id %>'><%= question.title %></a></li>
+		<% @user.answers.map do |answer| %>
+			<li><a href='/questions/<%= answer.question_id %>'><%= answer.question.title %></a></li>
 		<% end %>
 	</ul>
+
 <% end %>
