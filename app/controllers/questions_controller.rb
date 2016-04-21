@@ -17,12 +17,19 @@ get '/questions/:id' do
 end
 
 post '/questions' do
+  # binding.pry
   question = Question.new(
     user_id: session[:user_id],
     title: params[:title],
     body: params[:body]
-    # tags: params[:tags]
     )
+    binding.pry
+    tag_array = []
+    tag_array = params[:tags].split(',')
+    tag_array.each do |tag|
+      new_tag = Tag.find_or_create_by(name: tag.strip)
+      question.tags << new_tag
+    end
   if question.save
     redirect '/questions'
   else
