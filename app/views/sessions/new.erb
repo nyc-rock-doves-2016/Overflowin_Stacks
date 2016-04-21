@@ -1,0 +1,9 @@
+<h2>Please enter your login infomation</h2>
+
+<%= erb :'/_errors' %>
+
+<form action='/login' method='POST'>
+	<input type='text' name='username' placeholder='Username'>
+	<input type='password' name='password' placeholder='Password'>
+	<input type='submit' value='Login'>
+</form>
