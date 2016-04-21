@@ -3,8 +3,7 @@
 
 <% @questions.each do |question| %>
 
- <a href='/questions/<%= question.title %>'>
-
+ <a href='/questions/<%= question.id %>'>
     <table>
       <tr>
         <td><%= question.votes.length %></td><td><%= question.answers.length %></td>
