@@ -1,3 +1,12 @@
 <% if logged_in? %>
-<h2>Welcome <%= current_user.username %> </h2>
+	<h2>Welcome <%= current_user.username %> </h2>
+
+
+	<h3>Questions you asked</h3>
+
+	<ul>
+		<% @questions.each do |question| %>
+			<li><a href='/questions/<%= question.id %>'><%= question.title %></a></li>
+		<% end %>
+	</ul>
 <% end %>
