@@ -1,30 +1,52 @@
-> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
+<h3>Questions:<h3>
+<ul>
+	<li>	
+	Questions should be ordered chronologically based on when they were created (newest-to-oldest)
+	</li>
+	<li>
+	Links to particular questions should just be the question title
+	</li>
+	<li>
+	Shouldn't be able to get to "questions/new" if you're not logged
+	</li>
+</ul>
 
-### Purpose
-The Sinatra Skeleton:
+<h3>Answers:</h3>
+<ul>
+	<li>	
+	Add answer form to 'Questions/Show', and make it a partial which will make AJAXifying easier
+	</li>
+	<li>
+	Shouldn't be able to get to "answers/new" if you're not logged 
+	</li>
+	<li>
+	Make sure associations are solid between Questions and Answers
+	</li>
+</ul>
 
-1. Provides a foundation for building challenges or creating a new Sinatra application.
-2. Demonstrates a reasonable set of practices around building Sinatra applications.
-3. Eases the transition to Rails for Dev Bootcamp students
+<h3>Comments:</h3>
+<ul>
+	<li>
+	Incorporate Comment routes
+	</li>
+	<li>
+	Shouldn't be able to get to "comments/new" if you're not logged 
+	</li>
+</ul>
 
-### Quickstart
+<h3>Users:</h3>
+<ul>
+	<li>
+	Add User information to User Show page (questions asked, questions answered)
+	</li>
+</ul>
 
-1.  `bundle install`
-2.  `shotgun config.ru`
-
-As needed, create models & migrations with the `rake` tasks:
-
-```
-rake generate:migration  # Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks
-rake generate:model      # Create an empty model in app/models, e.g., rake generate:model NAME=User
-```
-
-### Contributing
-
-We would love for you to help make the skeleton more awesome, There are three ways to contribute:
-
-1. Ask for a bug fix or enhancement!
-2. Submit a pull request for a bug fix or enhancement!
-3. Code review an open pull request!
-
-Be prepared to give and receive specific, actionable, and kind feedback!
+<h3>Other Important To-Dos:</h3>
+<ul>
+	<li>
+	Best Answer Logic/Methods associated with Best Answer
+	</li>
+	<li>
+	Votes - only one vote per question/answer/comment per user
+	</li>
+</ul>
