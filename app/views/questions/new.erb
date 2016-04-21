@@ -3,9 +3,11 @@
 <%= erb :'/_errors' %>
 
 <form action="/questions" method="post">
-  Title: <input cols="70" type="text" name="title">
+  Title: <input type="text" name="title">
   <br><br>Question: <br>
   <textarea rows="10" cols="70" type="text" name="body"></textarea>
   <br>
+  Tags: <input type="text" name="tags">
+  <br><br>
   <input type="submit" value="Post Question">
 </form>

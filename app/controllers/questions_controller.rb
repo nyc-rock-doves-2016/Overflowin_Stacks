@@ -20,7 +20,9 @@ post '/questions' do
   question = Question.new(
     user_id: session[:user_id],
     title: params[:title],
-    body: params[:body])
+    body: params[:body]
+    # tags: params[:tags]
+    )
   if question.save
     redirect '/questions'
   else
