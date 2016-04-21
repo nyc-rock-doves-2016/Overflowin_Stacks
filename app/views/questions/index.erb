@@ -3,7 +3,7 @@
 
 <% @questions.each do |question| %>
 
- <a href='/questions/<%= question.title %>'>
+  <a href='/questions/<%= question.id %>'>
 
     <table>
       <tr>
@@ -12,7 +12,7 @@
 
       <tr>
         <td>votes</td><td>answers</td>
-      </tr
+      </tr>
     </table>
   </a>
 
