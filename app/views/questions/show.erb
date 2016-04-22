@@ -34,7 +34,7 @@
 
 
 <ul class="answers-list">
-  <% @question.answers.each do |answer| %>
+  <% @question.answers.order(best_answer: :desc).each do |answer| %>
     <%= erb :'/answers/_new_answer_partial', locals: {answer: answer} %>
   <%end%>
 </ul>

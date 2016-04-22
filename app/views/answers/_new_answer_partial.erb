@@ -1,10 +1,12 @@
 <li>
+  <% if answer.best_answer %>
+    <p>THIS IS THE BEST ONE!</p>
+  <% else %>
+    <form action="/questions/<%= answer.question.id %>/answers/<%= answer.id %>" method="post">
+      <input type="submit" value="Make Best Answer!">
+    </form>
+  <% end %>
 
-  <form action="/questions/<%= answer.question.id %>/answers/<%= answer.id %>" method="post">
-    <input type="submit" value="Make Best Answer!">
-  </form>
-
-  <p><%= answer.best_answer %></p>
   <p><%= answer.body %></p>
   <div>
     <%= answer.created_at %>
