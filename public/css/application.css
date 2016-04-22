@@ -11,19 +11,28 @@ nav {
   display: inline-block;
   border: 1px solid black;
   float: right;
-  margin: 5px 150px 5px 0px;
+  margin: 5px 150px 15px 0px;
 }
 nav ul {
   list-style-type: none;
 }
-nav ul a {
-  font-color: gray;
+nav a {
+  color: green;
+  font-weight: bold;
+  border-left: 1px solid green;
+  border-right: 1px solid green;
+  margin: 0px -3px;
+  padding: 0px 5px;
 }
 
 h1 {
   color: green;
   font-size: 40px;
   margin: 0px 70px;
+}
+
+h2 {
+  margin: auto;
 }
 
 h3 {
@@ -62,12 +71,15 @@ h3 {
 }
 .tags li {
   display: inline-block;
-  background: pink;
+  background: black;
   margin: 0px 5px;
-  font-color: green;
+  padding: 5px 10px;
+
   font-weight: bold;
 }
 .tags li a {
   text-decoration: none;
+  color: green;
+  font-weight: bold;
 }
 
