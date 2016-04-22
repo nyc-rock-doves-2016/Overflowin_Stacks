@@ -6,7 +6,6 @@ post '/questions/:question_id/votes' do
       vote.value = -1
     end
   if vote.save
-    # binding.pry
     redirect '/questions'
   else
     redirect '/questions'
