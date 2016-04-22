@@ -35,30 +35,7 @@
 
 <ul class="answers-list">
   <% @question.answers.each do |answer| %>
-  <div class='answer'>
-    <li>
-<!--       <form action="" method="post">
-        <input type="hidden" name="best_answer">
-      </form> -->
-      <p><%= answer.body%></p>
-      <div>
-        <%= answer.created_at %>
-        <a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a>
-      </div>
-
-      <ul class="answers-comments-list">
-        <% answer.comments.each do |comment| %>
-          <li>
-            <p><%= comment.body %></p>
-            <p>
-              <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a>
-            <%= comment.created_at %>
-            </p>
-          </li>
-        <% end %>
-      </ul>
-    <a href="/answers/<%= answer.id %>/comments/new">add a comment</a>
-    </li>
+    <%= erb :'/answers/_new_answer_partial', locals: {answer: answer} %>
   <%end%>
 </ul>
 

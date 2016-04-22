@@ -9,13 +9,13 @@ get '/questions/:question_id/answers/new' do
 end
 
 post '/questions/:question_id/answers' do
-	answer = Answer.new(
+	@answer = Answer.new(
 		body: params[:body],
 		question_id: params[:question_id],
 		user_id: session[:user_id])
-		if answer.save
+		if @answer.save
 			if request.xhr?
-				erb :'/_answer_form_partial', layout: false, locals: {answer: answer}
+				erb :'/answers/_new_answer_partial', layout: false, locals: {answer: @answer}
 			else
 				redirect "/questions/#{answer.question.id}"
 			end
