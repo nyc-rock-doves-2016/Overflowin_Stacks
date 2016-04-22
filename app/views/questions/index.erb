@@ -11,25 +11,11 @@
 <input type="submit" value="Downvote">
 </form>
  <a href='/questions/<%= question.id %>'>
-    <table>
-      <tr>
-        <td><%= question.points %></td><td><%= question.answers.length %></td>
-      </tr>
-
-      <tr>
-        <td>votes</td><td>answers</td>
-      </tr>
-    </table>
-  </a>
-
-  <a href='/questions/<%= question.id %>'>
-    <h4><%= question.title %></h4>
-    <ul>
-      <% question.tags.each do |tag| %>
-        <li class="index-tag"><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
-      <% end %>
-    </ul>
-  </a>
-  <a href="/users/<%= question.user.id %>"><%= question.user.username %></a></p>
-<p>*********************************************</p>
+     <a href="/questions/<%=question.id%>"><%=question.title %></a>
+  <br>
+  <div class="question-stats" id="<%=question.id%>">
+    <span> submitted by <%=question.user.username %> | <%=question.updated_at%></span> |
+    <span> <%=question.points %> points </span>
+  </div>
+  <br>
 <% end %>
