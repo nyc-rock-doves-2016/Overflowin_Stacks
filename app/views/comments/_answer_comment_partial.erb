@@ -1,9 +1,11 @@
 <div>
-  <form action="/comments" method="POST">
-    <input type="textarea" name="comment[body]" >
+  <form action="/answers/<%= @answer.id %>/comments" method="POST">
+     <textarea rows="3" cols="50" type="text" name="comment[body]"></textarea>
     <input type="hidden" name="comment[commentable_type]" value="Answer">
-    <input type="comment[commentable_id]" value="<%= answer.id %>">
-    <input type="comment[user_id]" value="<%= current_user.id %>">
+    <input type="hidden" name ="comment[commentable_id]" value="<%= @answer.id %>">
+    <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
     <input type="submit" value="Add a Comment">
   </form>
 </div>
+
+<a href="/">Return Home </a>
