@@ -14,10 +14,14 @@ post '/questions/:question_id/answers' do
 		user_id: session[:user_id]
 		)
 		if answer.save
-			redirect "/questions/#{answer.question.id}"
-	else
-		redirect "/"
-	end
+			if request.xhr?
+				erb :'/_new', layout: false
+			else
+				redirect "/questions/#{answer.question.id}"
+			end
+		else
+			redirect "/"
+		end
 end
 
 get '/questions/:question_id/answers/:id/edit' do
