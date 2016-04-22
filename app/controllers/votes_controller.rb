@@ -8,8 +8,9 @@ post '/questions/:question_id/votes' do
     end
   end
   if vote.save
+    erb :'/questions'
   else
-    
+    erb :'/questions'
   end
 end
 
@@ -24,8 +25,9 @@ post '/answers/:answer_id/votes' do
     end
   end
   if vote.save
+    erb :'/questions'
   else
-    
+    erb :'/questions'
   end
 end
 
