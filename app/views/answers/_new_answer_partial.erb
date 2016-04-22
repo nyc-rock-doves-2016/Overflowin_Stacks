@@ -1,5 +1,11 @@
 <li>
-  <p><%= answer.body%></p>
+
+  <form action="/questions/<%= answer.question.id %>/answers/<%= answer.id %>" method="post">
+    <input type="submit" value="Make Best Answer!">
+  </form>
+
+  <p><%= answer.best_answer %></p>
+  <p><%= answer.body %></p>
   <div>
     <%= answer.created_at %>
     <a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a>
