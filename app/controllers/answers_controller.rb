@@ -40,6 +40,19 @@ put '/questions/:question_id/asnwers/:id' do
 	end
 end
 
+post '/questions/:question_id/answers/:id' do
+	@answer = Answer.find_by(id: params[:id])
+	if @answer.question.user_id == session[:user_id]
+		@answer.question.answers.each do |answer|
+			answer.best_answer = false
+			answer.save
+		end
+		@answer.best_answer = true
+		@answer.save
+	end
+	redirect "/questions/#{@answer.question.id}"
+end
+
 delete '/questions/:question_id/answers/:id' do
 	@question = Question.find(params[:question_id])
 	@answer = @question.answers.find(params[:id])

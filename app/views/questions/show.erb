@@ -3,7 +3,7 @@
 
 <ul>
   <% @question.tags.each do |tag| %>
-      <li class="question-tag"><%= tag.name%></li>
+      <li class="question-tag"><a href="/tags/<%= tag.id %>"><%= tag.name%></a></li>
   <% end %>
 </ul>
 
@@ -34,13 +34,13 @@
 
 
 <ul class="answers-list">
-  <% @question.answers.each do |answer| %>
+  <% @question.answers.order(best_answer: :desc).each do |answer| %>
     <%= erb :'/answers/_new_answer_partial', locals: {answer: answer} %>
   <%end%>
 </ul>
 
 <div id="new-answer-container">
-  <a class="new-answer-link" href="/questions/<%= @question.id %>/answers/new">Add An Answer </a>
+  <a id="new-answer-link" href="/questions/<%= @question.id %>/answers/new">Add An Answer </a>
 </div>
 
 
