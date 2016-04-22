@@ -1,24 +1,27 @@
 get '/questions/:question_id/answers/new' do
 	@question = Question.find(params[:question_id])
 	if request.xhr?
-		erb :'answers/_new', layout: false, locals: {question: @question}
+		erb :'/answers/_answer_form_partial', layout: false
 	else
-		erb :'answers/new'
+		# erb :'answers/_new'
+		redirect "/"
 	end
 end
 
 post '/questions/:question_id/answers' do
-	question = Question.find(params[:question_id])
-	answer = question.answers.new(body: params[:body], question_id: params[:question_id], user_id: session[:user_id])
-	if answer.save
-		if request.xhr?
-			erb :'answers/_new', layout: false, locals: {answer: answer, question: question}
+	answer = Answer.new(
+		body: params[:body],
+		question_id: params[:question_id],
+		user_id: session[:user_id])
+		if answer.save
+			if request.xhr?
+				erb :'/_answer_form_partial', layout: false, locals: {answer: answer}
+			else
+				redirect "/questions/#{answer.question.id}"
+			end
 		else
-			redirect "/questions/#{question.id}/answers"
+			redirect "/"
 		end
-	else
-		erb :'answers/new', locals: {answer: answer, question: question}
-	end
 end
 
 get '/questions/:question_id/answers/:id/edit' do
