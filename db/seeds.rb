@@ -13,7 +13,7 @@ end
 
 10.times do
   Question.create!(
-    title: Faker::Lorem.sentence(rand(1..4)),
+    title: Faker::Hipster.sentences(1),
     body: Faker::Hacker.say_something_smart,
     user_id: rand(1..5)
     )
@@ -21,7 +21,7 @@ end
 
 20.times do
   Answer.create!(
-    body: Faker::Hipster.sentence + "?",
+    body: Faker::Hipster.sentence,
     question_id: rand(1..10),
     user_id: rand(1..5)
   )
