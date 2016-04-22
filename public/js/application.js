@@ -21,7 +21,7 @@ $(document).ready(function() {
 				data: $target.serialize()
 			}).done(function(response){
 				$('.answers-list').append(response);
-				// console.log("i'm the response yay", response);
+
 				$('#new-answer-container').html($('.new-answer-link'));
 			// then use jquery to rip out old element in dom and relace with new response element
 			}).fail(function(error){
