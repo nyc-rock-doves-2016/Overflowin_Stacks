@@ -1,7 +1,7 @@
 <h2><%= @question.title %></h2>
 <p><%= @question.body %></p>
 
-<ul>
+<ul class="tags">
   <% @question.tags.each do |tag| %>
       <li class="question-tag"><a href="/tags/<%= tag.id %>"><%= tag.name%></a></li>
   <% end %>

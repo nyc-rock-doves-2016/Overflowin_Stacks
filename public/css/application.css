@@ -1,4 +1,73 @@
+header {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+}
+
+
+
+
 nav {
   display: inline-block;
   border: 1px solid black;
+  float: right;
+  margin: 5px 150px 5px 0px;
 }
+nav ul {
+  list-style-type: none;
+}
+nav ul a {
+  font-color: gray;
+}
+
+h1 {
+  color: green;
+  font-size: 40px;
+  margin: 0px 70px;
+}
+
+h3 {
+  padding-left: 200px;
+  width: 600px;
+  border-bottom: 1px solid green;
+}
+
+.vote {
+  float: left;
+  margin: 10px 30px 0px 50px;
+  clear: both;
+
+}
+
+.question {
+  margin: 10px 10px 50px 30px;
+  float: left;
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
+
+}
+
+.answers-list {
+  list-style-type: none;
+}
+
+.answers-list li {
+  width: 1000px;
+  background-color: gray;
+  margin: 5px 5px;
+}
+
+.tags {
+  list-style-type: none;
+}
+.tags li {
+  display: inline-block;
+  background: pink;
+  margin: 0px 5px;
+  font-color: green;
+  font-weight: bold;
+}
+.tags li a {
+  text-decoration: none;
+}
+
