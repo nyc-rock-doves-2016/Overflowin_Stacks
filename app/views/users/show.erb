@@ -30,7 +30,7 @@
 <% else %>
 	<h2><%= @user.username %>'s Profile </h2>
 
-	<h3>Questions <%= @user.username %> Asked</h3>	
+	<h3>Questions <%= @user.username %> Asked</h3>
 		<ul>
 			<% @questions.each do |question| %>
 				<li><a href='/questions/<%= question.id %>'><%= question.title %></a></li>

@@ -1,6 +1,8 @@
 <h3>Top Questions</h3>
 
 <% @questions.each do |question| %>
+
+<div class="vote"
 <form action="/questions/<%= question.id %>/votes" method="POST" name="Upvote">
 <input type="hidden" name="vote_type" value="Upvote">
 <input type="submit" value="Upvote">
@@ -10,6 +12,8 @@
 <input type="hidden" name="vote_type" value="Downvote">
 <input type="submit" value="Downvote">
 </form>
+</div>
+<div class="question">
  <a href='/questions/<%= question.id %>'>
      <a href="/questions/<%=question.id%>"><%=question.title %></a>
   <br>
@@ -17,5 +21,7 @@
     <span> submitted by <%=question.user.username %> | <%=question.updated_at%></span> |
     <span> <%=question.points %> points </span>
   </div>
-  <br>
+  <!-- <br> -->
+</div>
+
 <% end %>

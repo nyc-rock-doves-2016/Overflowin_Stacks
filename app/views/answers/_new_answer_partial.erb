@@ -2,9 +2,11 @@
   <% if answer.best_answer %>
     <p>THIS IS THE BEST ONE!</p>
   <% else %>
-    <form action="/questions/<%= answer.question.id %>/answers/<%= answer.id %>" method="post">
-      <input type="submit" value="Make Best Answer!">
-    </form>
+    <% if answer.question.user_id == session[:user_id] %>
+      <form action="/questions/<%= answer.question.id %>/answers/<%= answer.id %>" method="post">
+        <input type="submit" value="Make Best Answer!">
+      </form>
+    <% end %>
   <% end %>
 
   <p><%= answer.body %></p>

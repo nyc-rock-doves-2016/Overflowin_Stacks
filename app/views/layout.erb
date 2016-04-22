@@ -19,7 +19,9 @@
   <title></title>
 </head>
 <body>
+  <header>
   <nav>
+    <form>
     <a href="/questions">Home</a>
     <% if logged_in? %>
     <a href='/users/<%= current_user.id %>'><%= current_user.username %></a>
@@ -33,7 +35,8 @@
     <a href='/users/new'>Register</a>
     <% end %>
   </nav>
-
+  <h1>Overflowin' Stacks</h1>
+</header>
   <%= yield %>
 
 </body>
