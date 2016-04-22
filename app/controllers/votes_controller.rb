@@ -5,10 +5,13 @@ post '/questions/:question_id/votes' do
     else params[:vote_type] == "Downvote"
       vote.value = -1
     end
-  if vote.save
+
+  # if request.xhr?
+    if vote.save
+  #     erb :'/questions/_question_votes_partial', layout: false, locals: {question: question}  
+  # else
     redirect '/questions'
-  else
-    redirect '/questions'
+    # end
   end
 end
 
