@@ -42,13 +42,14 @@ end
 
 post '/questions/:question_id/answers/:id' do
 	@answer = Answer.find_by(id: params[:id])
-	@answer.question.answers.each do |answer|
-		answer.best_answer = false
-		answer.save
+	if @answer.question.user_id == session[:user_id]
+		@answer.question.answers.each do |answer|
+			answer.best_answer = false
+			answer.save
+		end
+		@answer.best_answer = true
+		@answer.save
 	end
-	@answer.best_answer = true
-	@answer.save
-	# binding.pry
 	redirect "/questions/#{@answer.question.id}"
 end
 
