@@ -1,0 +1,21 @@
+<div class='answer'>
+    <li>
+      <p><%= answer.body%></p>
+      <div>
+        <%= answer.created_at %>
+        <a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a>
+      </div>
+
+      <ul class="answers-comments-list">
+        <% answer.comments.each do |comment| %>
+          <li>
+            <p><%= comment.body %></p>
+            <p>
+              <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a>
+            <%= comment.created_at %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+</div>
