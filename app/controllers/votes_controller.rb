@@ -1,33 +1,32 @@
 post '/questions/:question_id/votes' do
-  vote = Vote.build(user_id: current_user.id, voteable_id: params[:question_id], voteable_type: "Question")
-  if request.xhr?
+  vote = Vote.new(user_id: current_user.id, voteable_id: params[:question_id], voteable_type: "Question")
     if params[:vote_type] == "Upvote"
-      vote.value + 1
-    elsif params[:vote_type] == "Downvote"
-      vote.value - 1
+      vote.value = 1
+    else params[:vote_type] == "Downvote"
+      vote.value = -1
     end
-  end
   if vote.save
-    erb :'/questions'
+    # binding.pry
+    redirect '/questions'
   else
-    erb :'/questions'
+    redirect '/questions'
   end
 end
 
 post '/answers/:answer_id/votes' do
-  vote = Vote.build(user_id: current_user.id, voteable_id: params[:answer_id], voteable_type: "Answer")
+  vote = Vote.new(user_id: current_user.id, voteable_id: params[:answer_id], voteable_type: "Answer")
 
   if request.xhr?
     if params[:vote_type] == "Upvote"
       vote.value + 1
     elsif params[:vote_type] == "Downvote"
-      vote.value - 1
+      vote.value (- 1)
     end
   end
   if vote.save
-    erb :'/questions'
+    redirect '/questions'
   else
-    erb :'/questions'
+    redirect '/questions'
   end
 end
 
