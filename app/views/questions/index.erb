@@ -1,7 +1,15 @@
 <h3>Top Questions</h3>
 
 <% @questions.each do |question| %>
+<form action="/questions/<%= question.id %>/votes" method="POST" name="Upvote">
+<input type="hidden" name="vote_type" value="Upvote">
+<input type="submit" value="Upvote">
+</form>
 
+<form action="/questions/<%= question.id %>/votes" method="POST" name="Downvote">
+<input type="hidden" name="vote_type" value="Downvote">
+<input type="submit" value="Downvote">
+</form>
  <a href='/questions/<%= question.id %>'>
     <table>
       <tr>
@@ -14,7 +22,7 @@
     </table>
   </a>
 
-  <a href='/questions/<%= question.user.id %>'>
+  <a href='/questions/<%= question.id %>'>
     <h4><%= question.title %></h4>
     <ul>
       <% question.tags.each do |tag| %>

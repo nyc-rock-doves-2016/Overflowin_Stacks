@@ -8,7 +8,9 @@ class Question < ActiveRecord::Base
 
   validates :title, :body, :user_id, presence: true
 
-  # def points
-  #   votes.sum(:value)
-  # end
+  def points
+    votes.sum(:value)
+  end
 end
+
+

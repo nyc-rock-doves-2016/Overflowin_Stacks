@@ -26,7 +26,7 @@
   <% end %>
 </ul>
 
-<a href="/comments/new">add a comment</a>
+<a href="/questions/<%= @question.id %>/comments/new">add a comment</a>
 
 <div id="new-question-comment-container">
 
@@ -37,6 +37,9 @@
   <% @question.answers.each do |answer| %>
   <div class='answer'>
     <li>
+<!--       <form action="" method="post">
+        <input type="hidden" name="best_answer">
+      </form> -->
       <p><%= answer.body%></p>
       <div>
         <%= answer.created_at %>
@@ -55,13 +58,11 @@
         <% end %>
       </ul>
     </li>
-  </div>
+    <a href="/answers/<%= answer.id %>/comments/new">add a comment</a>
   <%end%>
 </ul>
+<div id="new-answer-comment-container">
 
-<a href="/comments/new">add a comment</a>
-<br>
-<a class="new-answer-link" href="/questions/<%= @question.id %>/answers/new">Answer This Question</a>
-<div class="new-answer">
+</div>
 
 </div>

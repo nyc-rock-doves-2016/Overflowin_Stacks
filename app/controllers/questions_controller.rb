@@ -20,7 +20,14 @@ post '/questions' do
   question = Question.new(
     user_id: session[:user_id],
     title: params[:title],
-    body: params[:body])
+    body: params[:body]
+    )
+    tag_array = []
+    tag_array = params[:tags].split(',')
+    tag_array.each do |tag|
+      new_tag = Tag.find_or_create_by(name: tag.strip)
+      question.tags << new_tag
+    end
   if question.save
     redirect '/questions'
   else
