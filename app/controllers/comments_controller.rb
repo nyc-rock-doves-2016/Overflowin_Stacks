@@ -1,5 +1,6 @@
 get '/questions/:question_id/comments/new' do
   @question = Question.find_by(id: params[:question_id])
+
   if request.xhr?
     erb :'/comments/_question_comment_partial', layout: false, locals: {question: @question}
   else
@@ -19,12 +20,15 @@ end
 
 post '/questions/:id/comments' do
   comment = Comment.new(params[:comment])
-  if comment.save
-    redirect "/questions/#{comment.commentable_id}"
+  if request.xhr?
+    if comment.save
+
+      erb :'/comments/_comment_partial', layout: false, locals: {comment: comment}
   else
     @errors = ["Missing title or body"]
     erb :'/comments/_question_comment_partial'
   end
+end
 end
 
 post '/answers/:id/comments' do

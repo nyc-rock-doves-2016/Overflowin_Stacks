@@ -1,5 +1,5 @@
 <div>
-<form action="/questions/<%= @question.id %>/comments" method="POST">
+<form id="new-question-comment-form" action="/questions/<%= @question.id %>/comments" method="POST">
   <textarea rows="3" cols="50" type="text" name="comment[body]"></textarea>
   <input type="hidden" name="comment[commentable_type]" value="Question">
   <input type= "hidden" name="comment[commentable_id]" value="<%= @question.id %>">
