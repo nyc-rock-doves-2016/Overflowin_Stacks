@@ -1,0 +1,7 @@
+<h2><%= @tag.name %></h2>
+
+<ul>
+  <% @tag.questions.each do |question| %>
+    <li><a href="/questions/<%= question.id %>"><%= p question.title %></a></li>
+  <% end %>
+</ul>
