@@ -5,24 +5,24 @@ $(document).ready(function() {
 			$.ajax({
 				url: $target.attr('href')
 			}).done(function(response){
-				$('#new-answer-comment-container').html(response);
+				$('#new-answer-container').html(response);
 			}).fail(function(error){
 				console.log("ERROR")
 			});
 		});
 
-		$('.new-answer').on('submit','#new-answer-form', function(event){
+		$('#new-answer-container').on('submit','#new-answer-form', function(event){
 			event.preventDefault();
-			console.log('we cool?')
 			var $target = $(event.target)
-			debugger;
+
 			$.ajax({
 				url: $target.attr('action'),
 				method: $target.attr('method'),
 				data: $target.serialize()
 			}).done(function(response){
-				console.log("i'm the response yay", response);
-				debugger;
+				$('.answers-list').append(response);
+				// console.log("i'm the response yay", response);
+				$('#new-answer-container').html($('.new-answer-link'));
 			// then use jquery to rip out old element in dom and relace with new response element
 			}).fail(function(error){
 				console.log("there was an ERROR");
