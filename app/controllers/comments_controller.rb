@@ -30,7 +30,8 @@ end
 post '/answers/:id/comments' do
   comment = Comment.new(params[:comment])
   if comment.save
-    redirect "/questions/#{comment.commentable_id}"
+
+    redirect "/questions/#{comment.commentable.question_id}"
   else
     @errors = ["Missing title or body"]
     erb :'/comments/_answer_comment_partial'
