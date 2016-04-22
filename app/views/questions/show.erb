@@ -3,31 +3,39 @@
 
 <ul>
   <% @question.tags.each do |tag| %>
-    <li class="question-tag"><%= tag.name%></li>
+      <li class="question-tag"><%= tag.name%></li>
   <% end %>
 </ul>
 
 <div>
-<span><%= @question.created_at %>
-<a href="/users/<%= @question.user.id %>"><%= @question.user.username %></a></span>
+  <span><%= @question.created_at %>
+      <a href="/users/<%= @question.user.id %>"><%= @question.user.username %></a>
+  </span>
 </div>
 
 <ul class="question-comments">
   <% @question.comments.each do |comment| %>
     <li>
       <p><%= comment.body%></p>
-      <p><a href="/users/<%= comment.user.id%>"><%= comment.user.username %></a>
-      <%= comment.created_at %></p>
+      <p>
+        <a href="/users/<%= comment.user.id%>"><%= comment.user.username %>
+        </a>
+      <%= comment.created_at %>
+      </p>
     </li>
   <% end %>
 </ul>
+
 <a href="/questions/<%= @question.id %>/comments/new">add a comment</a>
+
 <div id="new-question-comment-container">
+
 </div>
 
 
-<ul class="answers">
+<ul class="answers-list">
   <% @question.answers.each do |answer| %>
+  <div class='answer'>
     <li>
 <!--       <form action="" method="post">
         <input type="hidden" name="best_answer">
@@ -38,12 +46,14 @@
         <a href="/users/<%= answer.user.id %>"><%= answer.user.username %></a>
       </div>
 
-      <ul class="answer-comments">
+      <ul class="answers-comments-list">
         <% answer.comments.each do |comment| %>
           <li>
             <p><%= comment.body %></p>
-            <p><a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a>
-            <%= comment.created_at %></p>
+            <p>
+              <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a>
+            <%= comment.created_at %>
+            </p>
           </li>
         <% end %>
       </ul>
@@ -52,14 +62,7 @@
   <%end%>
 </ul>
 <div id="new-answer-comment-container">
+
 </div>
 
-<h3>Your Answer</h3>
-<div id="your-answer-container">
-    <form action='/answers' method='POST'>
-    <textarea rows="3" cols="50" type="text" name="answer[body]"></textarea>
-    <br>
-      <input type="submit" value="Post Your Answer">
-  </form>
 </div>
-
