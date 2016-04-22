@@ -1,4 +1,4 @@
-<h3>Questions:<h3>
+<h3>Questions:</h3>
 <ul>
 	<li>	
 	Questions should be ordered chronologically based on when they were created (newest-to-oldest)

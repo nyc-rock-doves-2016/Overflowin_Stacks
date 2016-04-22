@@ -1,11 +1,11 @@
 <h2>Update Your Answer</h2>
-	<form action='/answers/<%= @answer.id %>' method='POST'>
+	<form action='/questions/<%= @question.id %>/answers/<%= @answer.id %>/edit' method='POST'>
 		<input type='hidden' name='_method' value='PUT'>
 		<textarea rows="3" cols="50" type="text" name="answer[body]" value='<% @answer.body %>'</textarea>
   		<input type="submit" value="Update Your Answer">	
 	</form>
 
-	<form action='/answers/<%= @answer.id %>' method='POST'>
+	<form action='/questions/<%= @question.id %>/answers/<%= @answer.id %>' method='POST'>
 		<input type='hidden' name='_method' value='DELETE'>
   		<input type="submit" value="Delete Your Answer">	
 	</form>

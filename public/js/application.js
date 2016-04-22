@@ -1,7 +1,32 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+	$('.new-answer-link').on('click', function(event){
+		event.preventDefault();
+			var $target = $(event.target)
+			$.ajax({
+				url: $target.attr('href')
+			}).done(function(response){
+				$('#new-answer-container').html(response);
+			}).fail(function(error){
+				console.log("ERROR")
+			});
+		});
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+		$('#new-answer-container').on('submit','#new-answer-form', function(event){
+			event.preventDefault();
+			var $target = $(event.target)
+
+			$.ajax({
+				url: $target.attr('action'),
+				method: $target.attr('method'),
+				data: $target.serialize()
+			}).done(function(response){
+				$('.answers-list').append(response);
+				// console.log("i'm the response yay", response);
+				$('#new-answer-container').html($('.new-answer-link'));
+			// then use jquery to rip out old element in dom and relace with new response element
+			}).fail(function(error){
+				console.log("there was an ERROR");
+		});
+	});
+
 });

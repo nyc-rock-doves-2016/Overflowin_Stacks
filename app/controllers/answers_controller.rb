@@ -1,33 +1,48 @@
-get '/answers/new' do
-	erb :'answers/new'
-end
-
-post '/answers' do
-	answer = Answer.new(params[:answer])
-	if answer.save
-		redirect '/answers'
+get '/questions/:question_id/answers/new' do
+	@question = Question.find(params[:question_id])
+	if request.xhr?
+		erb :'/answers/_answer_form_partial', layout: false
 	else
-		erb :'answers/new'
+		# erb :'answers/_new'
+		redirect "/"
 	end
 end
 
-get '/answers/:id/edit' do
-	@answer = Answer.find(params[:id])
+post '/questions/:question_id/answers' do
+	answer = Answer.new(
+		body: params[:body],
+		question_id: params[:question_id],
+		user_id: session[:user_id])
+		if answer.save
+			if request.xhr?
+				erb :'/_answer_form_partial', layout: false, locals: {answer: answer}
+			else
+				redirect "/questions/#{answer.question.id}"
+			end
+		else
+			redirect "/"
+		end
+end
+
+get '/questions/:question_id/answers/:id/edit' do
+	@question = Question.find(params[:question_id])
+	@answer = @question.answers.find(params[:id])
 	erb :'answers/edit'
 end
 
-put '/asnwers/:id' do
-	@answer = Answer.find(params[:id])
-	@answer.update_attributes(params[:answer])
-	if @answer.save
-		redirect '/questions/:id'
+put '/questions/:question_id/asnwers/:id' do
+	@question = Question.find(params[:question_id])
+	@answer = @question.answers.find(params[:id])
+	if @answer.update_attributes(params[:answer])
+		redirect "/questions/#{question.id}/answers"
 	else
 		erb :'answers/edit'
 	end
 end
 
-delete '/answers/:id' do
-	@answer = Answer.find(params[:id])
+delete '/questions/:question_id/answers/:id' do
+	@question = Question.find(params[:question_id])
+	@answer = @question.answers.find(params[:id])
 	@answer.destroy
-	redirect '/questions/:id'
+	redirect "/questions/#{@question.id}/answers"
 end
