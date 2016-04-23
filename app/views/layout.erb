@@ -21,7 +21,6 @@
 <body>
   <header>
   <nav>
-    <form>
     <a href="/questions">Home</a>
     <% if logged_in? %>
     <a href='/users/<%= current_user.id %>'><%= current_user.username %></a>
