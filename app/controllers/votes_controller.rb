@@ -1,4 +1,11 @@
+#ZM: I would break these up into separate routes for up vote vs. down vote
 post '/questions/:question_id/votes' do
+
+  #ZM: We make make this a little cleaner by using build.
+
+  # question = Question.find(params[:question_id])
+  # vote =  question.votes.build(user: current_user)
+  
   vote = Vote.new(user_id: current_user.id, voteable_id: params[:question_id], voteable_type: "Question")
     if params[:vote_type] == "Upvote"
       vote.value = 1
