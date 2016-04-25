@@ -13,6 +13,14 @@ post '/questions/:question_id/answers' do
 		body: params[:body],
 		question_id: params[:question_id],
 		user_id: session[:user_id])
+
+		#ZM: let's reduce some nesting by doing something like this.
+		# redirect "/ unless @answer.save"
+		# if request.xhr? 
+		#  do foo
+		# else 
+		#  do bar
+		# end
 		if @answer.save
 			if request.xhr?
 				erb :'/answers/_new_answer_partial', layout: false, locals: {answer: @answer}
@@ -43,6 +51,11 @@ end
 post '/questions/:question_id/answers/:id' do
 	@answer = Answer.find_by(id: params[:id])
 	# if @answer.question.user_id == session[:user_id]
+	#ZM: indentation issues
+
+	#ZM: LOOK INTO update_all to update a group of records
+	# instead of iterating though all of them.
+	# # http://apidock.com/rails/ActiveRecord/Relation/update_all
 		@answer.question.answers.each do |answer|
 			answer.best_answer = false
 			answer.save

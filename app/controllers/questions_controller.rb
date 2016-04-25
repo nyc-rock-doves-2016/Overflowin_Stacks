@@ -22,12 +22,17 @@ post '/questions' do
     title: params[:title],
     body: params[:body]
     )
+
+    #ZM: Indentation Issues
     tag_array = []
     tag_array = params[:tags].split(',')
+
+    #ZM: This looks good
     tag_array.each do |tag|
       new_tag = Tag.find_or_create_by(name: tag.strip)
       question.tags << new_tag
     end
+
   if question.save
     redirect '/questions'
   else

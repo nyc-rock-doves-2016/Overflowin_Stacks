@@ -24,10 +24,14 @@ $(document).ready(function() {
 				method: $target.attr('method'),
 				data: $target.serialize()
 			}).done(function(response){
+
 				$('.question-comments').append(response);
 				$('.new-question-comment-link').show();
-
-				$('#new-question-comment-container').html($('.new-question-comment-link'));
+				//ZM: What is the actual response?
+				//ZM: Little confused as to what you're doing here
+				$('#new-question-comment-container').html(
+					$('.new-question-comment-link')
+				);
 			}).fail(function(error){
 				console.log('there was an ERROR');
 			});
