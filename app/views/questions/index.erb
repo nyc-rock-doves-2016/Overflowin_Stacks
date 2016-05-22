@@ -2,7 +2,7 @@
 
 <% @questions.each do |question| %>
 
-<div class="vote"
+<div class="vote">
 <form action="/questions/<%= question.id %>/votes" method="POST" name="Upvote">
 <input type="hidden" name="vote_type" value="Upvote">
 <input type="submit" value="Upvote">

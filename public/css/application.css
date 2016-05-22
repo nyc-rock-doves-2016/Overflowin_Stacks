@@ -4,6 +4,13 @@ header {
   background-color: black;
 }
 
+header a {
+  color:#FFF;
+}
+
+.question a{
+  color: #008000;
+}
 
 
 
